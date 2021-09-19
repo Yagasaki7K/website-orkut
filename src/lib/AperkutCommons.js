@@ -2,7 +2,6 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import NextLink from 'next/link';
 
-const BASE_URL = 'http://Aperkut.vercel.app/';
 const v = '1';
 
 
@@ -24,7 +23,11 @@ export function AperkutMenu({ githubUser }) {
     return (
         <AperkutMenu.Wrapper isMenuOpen={isMenuOpen}>
             <div className="container">
-                <AperkutMenu.Logo src={`${BASE_URL}/logo.svg`} />
+                <Link href="/">
+                    <a>
+                        <img src="/logo.png" className="Logo" />
+                    </a>
+                </Link>
 
                 <nav style={{ flex: 1 }}>
                     {[{ name: 'Inicio', slug: '/' }, { name: 'Amigos', slug: '/amigos' }, { name: 'Comunidades', slug: '/comunidades' }].map((menuItem) => (
@@ -44,8 +47,8 @@ export function AperkutMenu({ githubUser }) {
                 </nav>
 
                 <button onClick={() => setMenuState(!isMenuOpen)}>
-                    {isMenuOpen && <img src={`${BASE_URL}/icons/menu-open.svg?v=${v}`} />}
-                    {!isMenuOpen && <img src={`${BASE_URL}/icons/menu-closed.svg?v=${v}`} />}
+                    {isMenuOpen && <img src={`/search.svg`} />}
+                    {!isMenuOpen && <img src={`/search.svg`}/>}
                 </button>
             </div>
             <AperkutMenuProfileSidebar githubUser={githubUser} />
@@ -55,6 +58,15 @@ export function AperkutMenu({ githubUser }) {
 AperkutMenu.Wrapper = styled.header`
   width: 100%;
   background-color: #266F9E;
+
+    .Logo {
+        background-color: #ffffff;
+        padding: 2px 14px;
+        border-radius: 1000px;
+        height: 34px;
+    }
+
+
   .AperkutMenuProfileSidebar {
     background: white;
     position: fixed;
@@ -143,7 +155,7 @@ AperkutMenu.Wrapper = styled.header`
       background: #5579A1;
       padding: 10px 42px;
       border: 0;
-      background-image: url(${`${BASE_URL}/icons/search.svg`});
+      background-image: url(${`/search.svg`});
       background-position: 15px center;
       background-repeat: no-repeat;
       border-radius: 1000px;
@@ -154,12 +166,6 @@ AperkutMenu.Wrapper = styled.header`
       }
     } 
   }
-`;
-AperkutMenu.Logo = styled.img`
-  background-color: #ffffff;
-  padding: 9px 14px;
-  border-radius: 1000px;
-  height: 34px;
 `;
 
 function AperkutMenuProfileSidebar({ githubUser }) {
@@ -189,30 +195,30 @@ export function AperkutProfileSidebarMenuDefault() {
         <AperkutProfileSidebarMenuDefault.Wrapper>
             <nav>
                 <a href="/">
-                    <img src={`${BASE_URL}/icons/user.svg`} />
+                    <img src={`/user.svg`} />
                     Perfil
                 </a>
                 <a href="/">
-                    <img src={`${BASE_URL}/icons/book.svg`} />
+                    <img src={`/book.svg`} />
                     Recados
                 </a>
                 <a href="/">
-                    <img src={`${BASE_URL}/icons/camera.svg`} />
+                    <img src={`/camera.svg`} />
                     Fotos
                 </a>
                 <a href="/">
-                    <img src={`${BASE_URL}/icons/sun.svg`} />
+                    <img src={`/sun.svg`} />
                     Depoimentos
                 </a>
             </nav>
             <hr />
             <nav>
                 <a href="/">
-                    <img src={`${BASE_URL}/icons/plus.svg`} />
+                    <img src={`/plus.svg`} />
                     GitHub Trends
                 </a>
                 <a href="/logout">
-                    <img src={`${BASE_URL}//icons/logout.svg`} />
+                    <img src={`/icons/logout.svg`} />
                     Sair
                 </a>
             </nav>
@@ -254,7 +260,7 @@ export function AperkutNostalgicIconSet(props) {
                         {name}
                     </span>
                     <span className="AperkutNostalgicIconSet__number" style={{ gridArea: 'number' }}>
-                        <img key={`Aperkut__icon_set__${slug}_img`} className="AperkutNostalgicIconSet__iconSample" src={`https://Aperkut.vercel.app/icons/${icon}.svg`} />
+                        <img key={`Aperkut__icon_set__${slug}_img`} className="AperkutNostalgicIconSet__iconSample" src={`/${icon}.svg`} />
                         {props[slug] ? props[slug] : 0}
                     </span>
                 </li>
@@ -273,7 +279,7 @@ export function AperkutNostalgicIconSet(props) {
                         <span className="AperkutNostalgicIconSet__iconComplex" className="AperkutNostalgicIconSet__number" style={{ gridArea: 'number' }}>
                             {[0, 1, 2].map((_, index) => {
                                 const isHeartActive = index <= (total - 1);
-                                return <img key={`Aperkut__icon_set__${slug}_img_${index}`} src={`https://Aperkut.vercel.app/icons/${icon}.svg`} style={{ marginRight: '2px', opacity: isHeartActive ? 1 : '0.5' }} />
+                                return <img key={`Aperkut__icon_set__${slug}_img_${index}`} src={`/${icon}.svg`} style={{ marginRight: '2px', opacity: isHeartActive ? 1 : '0.5' }} />
                             })}
                         </span>
                     </li>
