@@ -2,7 +2,6 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import NextLink from 'next/link';
 
-const v = '1';
 
 
 function Link({ href, children, ...props }) {
@@ -15,11 +14,10 @@ function Link({ href, children, ...props }) {
     )
 }
 
-// ================================================================================================================
-// Menu
-// ================================================================================================================
-export function AperkutMenu({ githubUser }) {
+export function AperkutMenu() {
     const [isMenuOpen, setMenuState] = React.useState(false);
+    const githubUser = 'Yagasaki7K'
+    
     return (
         <AperkutMenu.Wrapper isMenuOpen={isMenuOpen}>
             <div className="container">
@@ -30,15 +28,15 @@ export function AperkutMenu({ githubUser }) {
                 </Link>
 
                 <nav style={{ flex: 1 }}>
-                    {[{ name: 'Inicio', slug: '/' }, { name: 'Amigos', slug: '/amigos' }, { name: 'Comunidades', slug: '/comunidades' }].map((menuItem) => (
-                        <Link key={`key__${menuItem.name.toLocaleLowerCase()}`} href={`${menuItem.slug.toLocaleLowerCase()}`}>
+                    {[{ name: 'Inicio', slug: '/' }, { name: 'Amigos', slug: `https://github.com/${githubUser}?tab=repositories` }, { name: 'Comunidades', slug: `https://github.com/${githubUser}` }].map((menuItem) => (
+                        <Link key={`key__${menuItem.name.toLocaleLowerCase()}`} href={`${menuItem.slug.toLocaleLowerCase()}`} target="_blank">
                             {menuItem.name}
                         </Link>
                     ))}
                 </nav>
 
                 <nav>
-                    <a href={`/logout`}>
+                    <a href={`/`}>
                         Sair
                     </a>
                     <div>
@@ -218,7 +216,7 @@ export function AperkutProfileSidebarMenuDefault() {
                     GitHub Trends
                 </a>
                 <a href="/logout">
-                    <img src={`/icons/logout.svg`} />
+                    <img src={`/logout.svg`} />
                     Sair
                 </a>
             </nav>
